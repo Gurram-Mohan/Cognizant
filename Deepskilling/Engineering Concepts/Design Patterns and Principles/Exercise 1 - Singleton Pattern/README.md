@@ -20,21 +20,6 @@ To overcome this challenge, the **Singleton Pattern** is used to guarantee that 
 
 ---
 
-## 📂 Project Structure
-
-```text
-Exercise 1 - Singleton Pattern
-│
-├── Logger.java
-├── TestLogger.java
-├── Logger.class
-├── TestLogger.class
-├── Output.png
-└── README.md
-```
-
----
-
 ## 🔧 Implementation Details
 
 ### Logger Class
