@@ -77,4 +77,3 @@ Through this exercise, I gained practical understanding of:
 * Real-world Design Pattern Usage
 
 ```
-```
