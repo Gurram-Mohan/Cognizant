@@ -59,16 +59,6 @@ To overcome this challenge, the **Singleton Pattern** is used to guarantee that 
 
 ---
 
-## 📊 Output
-
-```text
-Logger Instance Created
-LOG: First log message
-LOG: Second log message
-Only one Logger instance exists.
-```
-
----
 
 ## ✅ Result
 
