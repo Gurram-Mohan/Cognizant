@@ -48,25 +48,19 @@ for each forecasting period.
 ## 🔄 Recursive Execution Flow
 
 ```text id="7dd5cz"
-predictFutureValue(10000, 10%, 5)
+1. predictFutureValue(10000, 10%, 5)
 
-↓
-predictFutureValue(11000, 10%, 4)
+2. predictFutureValue(11000, 10%, 4)
 
-↓
-predictFutureValue(12100, 10%, 3)
+3. predictFutureValue(12100, 10%, 3)
 
-↓
-predictFutureValue(13310, 10%, 2)
+4. predictFutureValue(13310, 10%, 2)
 
-↓
-predictFutureValue(14641, 10%, 1)
+5. predictFutureValue(14641, 10%, 1)
 
-↓
-predictFutureValue(16105.1, 10%, 0)
+6. predictFutureValue(16105.1, 10%, 0)
 
-↓
-Return Final Value
+7. Return Final Value
 ```
 
 ---
