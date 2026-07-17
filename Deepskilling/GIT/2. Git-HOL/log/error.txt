@@ -1,0 +1,2 @@
+Error Log
+No critical errors detected.
