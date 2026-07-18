@@ -1,37 +1,48 @@
-# 🚀 WebApi_Handson 1 – First Web API
+# 🚀 Exercise 1 - First Web API using .NET 8
 
-## 📖 Description
+## 🎯 Objective
 
-This hands-on demonstrates the creation of a simple ASP.NET Core Web API application. The application exposes a default GET endpoint that returns WeatherForecast data in JSON format.
+Create a simple ASP.NET Core Web API project using the API template and execute the default GET action using Swagger.
+
+---
 
 ## 🛠️ Technologies Used
 
-* ASP.NET Core Web API
-* C#
-* .NET 10
-* Visual Studio 2022
+- ASP.NET Core Web API
+- .NET 8.0
+- Swagger (OpenAPI)
 
-## 📋 Steps Performed
+---
 
-* Created a new ASP.NET Core Web API project.
-* Selected the API template.
-* Enabled Controllers and OpenAPI support.
-* Built and executed the application.
-* Accessed the default GET endpoint.
-* Verified the JSON response in the browser.
+## 📂 Project Structure
 
-## 📌 API Endpoint
-
-**GET**
-
-```text
-https://localhost:7018/weatherforecast
+```
+FirstWebApi
+│── Controllers
+│── Properties
+│── Program.cs
+│── appsettings.json
+│── launchSettings.json
+│── FirstWebApi.csproj
 ```
 
-## 💻 Output
+---
 
-The application executed successfully and returned WeatherForecast data in JSON format through the GET endpoint.
+## 📌 Features
 
-## 🎯 Conclusion
+- Created a Web API project.
+- Executed the default GET action.
+- Tested the API using Swagger UI.
+- Verified JSON response.
 
-Successfully created and executed the first ASP.NET Core Web API application and verified the default GET API response.
+---
+
+## 🖼️ Output
+
+The successful execution of the GET API is shown in **Output.png**.
+
+---
+
+## ✅ Result
+
+Successfully created and executed the first ASP.NET Core Web API project using .NET 8.
