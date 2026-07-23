@@ -1,0 +1,6 @@
+@KafkaConsoleChat_HostAddress = http://localhost:5296
+
+GET {{KafkaConsoleChat_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
