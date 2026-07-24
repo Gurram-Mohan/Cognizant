@@ -1,0 +1,147 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "Data Structures & Algorithms",
+      "code": "CS101",
+      "credits": 4,
+      "gradeStatus": "passed",
+      "description": "Fundamental data structures including arrays, linked lists, trees, and graphs. Algorithm design and complexity analysis.",
+      "instructor": "Dr. Priya Sharma",
+      "schedule": "Mon, Wed, Fri - 9:00 AM",
+      "category": "Computer Science",
+      "enrolledCount": 45,
+      "maxCapacity": 60
+    },
+    {
+      "id": 2,
+      "name": "Database Management Systems",
+      "code": "CS201",
+      "credits": 3,
+      "gradeStatus": "passed",
+      "description": "Relational databases, SQL, normalization, transactions, and database design principles.",
+      "instructor": "Prof. Rajesh Kumar",
+      "schedule": "Tue, Thu - 11:00 AM",
+      "category": "Computer Science",
+      "enrolledCount": 38,
+      "maxCapacity": 50
+    },
+    {
+      "id": 3,
+      "name": "Operating Systems",
+      "code": "CS301",
+      "credits": 4,
+      "gradeStatus": "pending",
+      "description": "Process management, memory management, file systems, and concurrency concepts.",
+      "instructor": "Dr. Anitha Reddy",
+      "schedule": "Mon, Wed - 2:00 PM",
+      "category": "Computer Science",
+      "enrolledCount": 52,
+      "maxCapacity": 60
+    },
+    {
+      "id": 4,
+      "name": "Web Technologies",
+      "code": "CS401",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "description": "HTML5, CSS3, JavaScript, Angular, and modern web development frameworks.",
+      "instructor": "Prof. Karthik Nair",
+      "schedule": "Tue, Thu, Sat - 10:00 AM",
+      "category": "Web Development",
+      "enrolledCount": 60,
+      "maxCapacity": 60
+    },
+    {
+      "id": 5,
+      "name": "Machine Learning Fundamentals",
+      "code": "AI501",
+      "credits": 4,
+      "gradeStatus": "failed",
+      "description": "Supervised and unsupervised learning, neural networks, and model evaluation techniques.",
+      "instructor": "Dr. Meera Patel",
+      "schedule": "Mon, Wed, Fri - 3:00 PM",
+      "category": "Artificial Intelligence",
+      "enrolledCount": 30,
+      "maxCapacity": 40
+    },
+    {
+      "id": 6,
+      "name": "Software Engineering",
+      "code": "CS601",
+      "credits": 3,
+      "gradeStatus": "passed",
+      "description": "SDLC, Agile methodologies, design patterns, and software quality assurance.",
+      "instructor": "Prof. Suresh Babu",
+      "schedule": "Fri - 9:00 AM to 12:00 PM",
+      "category": "Software Engineering",
+      "enrolledCount": 42,
+      "maxCapacity": 55
+    },
+    {
+      "id": 7,
+      "name": "Computer Networks",
+      "code": "CS701",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "description": "OSI model, TCP/IP protocols, routing algorithms, and network security basics.",
+      "instructor": "Dr. Vijay Menon",
+      "schedule": "Tue, Thu - 2:00 PM",
+      "category": "Networking",
+      "enrolledCount": 35,
+      "maxCapacity": 50
+    },
+    {
+      "id": 8,
+      "name": "Cloud Computing",
+      "code": "CC801",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "description": "AWS, Azure, GCP fundamentals, serverless computing, and cloud architecture patterns.",
+      "instructor": "Prof. Lakshmi Iyer",
+      "schedule": "Wed, Fri - 4:00 PM",
+      "category": "Cloud",
+      "enrolledCount": 28,
+      "maxCapacity": 40
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Mohan Kumar",
+      "email": "mohan.kumar@college.edu",
+      "studentId": "STU2023001",
+      "gpa": 3.8,
+      "department": "Computer Science Engineering",
+      "semester": 5,
+      "enrolledCourses": [1, 2, 4],
+      "avatar": null
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "studentId": 1,
+      "courseId": 1,
+      "enrolledDate": "2024-01-15",
+      "semester": "Odd 2024",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "studentId": 1,
+      "courseId": 2,
+      "enrolledDate": "2024-01-15",
+      "semester": "Odd 2024",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "studentId": 1,
+      "courseId": 4,
+      "enrolledDate": "2024-01-20",
+      "semester": "Odd 2024",
+      "status": "active"
+    }
+  ]
+}
