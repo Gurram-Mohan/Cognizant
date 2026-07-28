@@ -44,9 +44,8 @@ The program demonstrates:
     │
     ├── Program.cs
     ├── Exercise02_ValueVsReference.csproj
-    ├── Properties
-    ├── bin
-    └── obj
+    ├── Exercise02_ValueVsReference
+└── README.md
 ```
 
 ---
