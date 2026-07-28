@@ -44,9 +44,8 @@ The program demonstrates:
     │
     ├── Program.cs
     ├── Exercise03_PrimaryConstructors.csproj
-    ├── Properties
-    ├── bin
-    └── obj
+    └── Output.png
+├── README.md
 ```
 
 ---
