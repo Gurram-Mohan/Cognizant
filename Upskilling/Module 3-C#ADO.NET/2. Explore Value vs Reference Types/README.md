@@ -41,7 +41,7 @@ The program demonstrates:
 2. Explore Value vs Reference Types
 │
 └── Exercise02_ValueVsReference
-    │
+    ├── Output.png
     ├── Program.cs
     ├── Exercise02_ValueVsReference.csproj
     ├── Exercise02_ValueVsReference
