@@ -45,6 +45,7 @@ The program demonstrates:
 └── Exercise06_ArrayLoops
     ├── Program.cs
     ├── Exercise06_ArrayLoops.csproj
+    ├── Output.png
     └── Properties
 └── README.md
 ```
