@@ -1,0 +1,205 @@
+/* ============================================================
+   Course List Component Styles
+   ============================================================ */
+
+.controls-section {
+  background: white;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-200);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+  margin-top: -3rem; /* Overlap with hero */
+  position: relative;
+  z-index: 10;
+}
+
+.search-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  flex: 2;
+  min-width: 250px;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-400);
+  pointer-events: none;
+}
+
+.search-box input {
+  padding-left: 2.75rem;
+  width: 100%;
+}
+
+/* Filters */
+.filter-group {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 3;
+  min-width: 300px;
+}
+
+.filter-select {
+  flex: 1;
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-200);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter-select:hover {
+  background-color: white;
+  border-color: var(--color-gray-300);
+}
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  background: var(--color-gray-100);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-gray-500);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  color: var(--color-gray-800);
+}
+
+.toggle-btn.active {
+  background: white;
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* List View Layout */
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.list-view ::ng-deep .course-card {
+  flex-direction: row;
+  align-items: center;
+}
+
+.list-view ::ng-deep .card-header {
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: none;
+  border-right: 1px solid var(--color-gray-100);
+  min-width: 140px;
+  height: 100%;
+}
+
+.list-view ::ng-deep .card-body {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.list-view ::ng-deep .course-description {
+  display: none;
+}
+
+.list-view ::ng-deep .course-details {
+  border-top: none;
+  padding-top: 0;
+  flex-direction: row;
+  gap: var(--spacing-lg);
+  margin-left: auto;
+}
+
+.list-view ::ng-deep .capacity-bar {
+  min-width: 150px;
+  margin-left: var(--spacing-lg);
+}
+
+.list-view ::ng-deep .card-footer {
+  border-top: none;
+  border-left: 1px solid var(--color-gray-100);
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-width: 140px;
+}
+
+/* Loading State */
+.loading-state {
+  padding: var(--spacing-3xl) 0;
+  color: var(--color-gray-500);
+  font-weight: 500;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-gray-300);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: var(--color-gray-700);
+  margin-bottom: var(--spacing-xs);
+}
+
+.empty-state p {
+  color: var(--color-gray-500);
+  font-size: 0.95rem;
+}
+
+.results-info {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .list-view ::ng-deep .course-card { flex-direction: column; align-items: stretch; }
+  .list-view ::ng-deep .card-header { flex-direction: row; border-right: none; border-bottom: 1px solid var(--color-gray-100); height: auto; }
+  .list-view ::ng-deep .card-body { flex-direction: column; align-items: stretch; }
+  .list-view ::ng-deep .course-description { display: block; }
+  .list-view ::ng-deep .course-details { flex-direction: column; margin-left: 0; border-top: 1px solid var(--color-gray-100); padding-top: var(--spacing-sm); }
+  .list-view ::ng-deep .capacity-bar { margin-left: 0; }
+  .list-view ::ng-deep .card-footer { border-left: none; border-top: 1px solid var(--color-gray-100); flex-direction: row; justify-content: space-between; height: auto; }
+}
+
+@media (max-width: 768px) {
+  .controls-section { margin-top: -2rem; padding: var(--spacing-md); }
+  .search-filter-bar { flex-direction: column; align-items: stretch; gap: var(--spacing-md); }
+  .search-box, .filter-group { flex: none; width: 100%; min-width: 0; }
+  .view-toggle { align-self: flex-end; }
+}

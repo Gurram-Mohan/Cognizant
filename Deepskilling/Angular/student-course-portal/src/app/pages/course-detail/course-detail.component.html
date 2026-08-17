@@ -1,0 +1,96 @@
+<div class="page-content">
+  <div class="back-link mb-lg">
+    <button class="btn btn-outline btn-sm" (click)="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to Courses
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state flex-center flex-col gap-md" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Loading course details...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Course Detail Content -->
+  <div class="course-detail-card animate-fade-in" *ngIf="course && !loading">
+    <div class="cd-header">
+      <div class="cd-title-area">
+        <span class="category-badge">{{ course.category || 'General' }}</span>
+        <h1 class="cd-title">{{ course.name }}</h1>
+        <div class="cd-meta">
+          <span class="meta-item code-badge">{{ course.code }}</span>
+          <span class="meta-item credits-badge">{{ course.credits | creditSuffix }}</span>
+        </div>
+      </div>
+      <div class="cd-actions">
+        <ng-container *ngIf="enrolledIds$ | async as enrolledIds">
+          <button 
+            class="btn btn-lg" 
+            [class.btn-secondary]="!enrolledIds.includes(course.id)"
+            [class.btn-danger]="enrolledIds.includes(course.id)"
+            (click)="toggleEnroll(enrolledIds.includes(course.id))">
+            {{ enrolledIds.includes(course.id) ? 'Unenroll from Course' : 'Enroll in Course' }}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    
+    <div class="cd-body">
+      <div class="cd-main">
+        <h3>Description</h3>
+        <p class="cd-description">{{ course.description || 'No description available for this course.' }}</p>
+        
+        <h3 class="mt-lg">Syllabus Highlights</h3>
+        <ul class="cd-list">
+          <li>Introduction to core concepts</li>
+          <li>Practical assignments and projects</li>
+          <li>Mid-term and Final assessments</li>
+        </ul>
+      </div>
+      
+      <div class="cd-sidebar">
+        <div class="sidebar-card">
+          <h4>Course Information</h4>
+          
+          <div class="info-row">
+            <span class="info-label">Instructor</span>
+            <span class="info-value">{{ course.instructor || 'TBA' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Schedule</span>
+            <span class="info-value">{{ course.schedule || 'TBA' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Status</span>
+            <span class="info-value">
+              <span class="badge" 
+                [class.badge-success]="course.gradeStatus === 'passed'"
+                [class.badge-danger]="course.gradeStatus === 'failed'"
+                [class.badge-warning]="course.gradeStatus === 'pending'">
+                {{ course.gradeStatus | uppercase }}
+              </span>
+            </span>
+          </div>
+          
+          <div class="capacity-section mt-md" *ngIf="course.maxCapacity">
+            <div class="capacity-header">
+              <span class="info-label">Capacity</span>
+              <span class="info-value">{{ course.enrolledCount }}/{{ course.maxCapacity }}</span>
+            </div>
+            <div class="capacity-track">
+              <div class="capacity-fill bg-blue" [style.width.%]="(course.enrolledCount! / course.maxCapacity!) * 100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

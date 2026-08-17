@@ -1,0 +1,148 @@
+<!-- Hands-On 5: Reactive Form Template -->
+<div class="page-hero">
+  <div class="container">
+    <h1>Advanced Enrollment</h1>
+    <p>Reactive form with dynamic fields, custom validators, and async validation.</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="form-container animate-fade-in-up stagger-1">
+    
+    <div class="form-header">
+      <div class="header-title">
+        <h2>Reactive Enrollment</h2>
+        <span class="badge badge-info ml-sm">Advanced</span>
+      </div>
+      <a routerLink="/enroll" class="switch-link">← Back to Standard Form</a>
+    </div>
+
+    <!-- Success Message -->
+    <div class="alert alert-success mb-lg" *ngIf="submitted">
+      {{ successMessage }}
+    </div>
+
+    <!-- Hands-On 5: Bind the form group -->
+    <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()" class="enrollment-form">
+      
+      <!-- Student Name -->
+      <div class="form-group">
+        <label for="studentName" class="form-label">Full Name <span class="required">*</span></label>
+        <input type="text" id="studentName" formControlName="studentName" 
+               class="form-control"
+               [ngClass]="{'is-invalid': f['studentName'].invalid && (f['studentName'].dirty || f['studentName'].touched)}">
+        <!-- Validation Errors using FormGroup controls -->
+        <div *ngIf="f['studentName'].invalid && (f['studentName'].dirty || f['studentName'].touched)" class="error-message mt-xs">
+          <span *ngIf="f['studentName'].errors?.['required']">Name is required.</span>
+          <span *ngIf="f['studentName'].errors?.['minlength']">Name must be at least 3 characters.</span>
+        </div>
+      </div>
+
+      <!-- Email with Async Validator -->
+      <div class="form-group">
+        <label for="studentEmail" class="form-label">Email Address <span class="required">*</span></label>
+        <input type="email" id="studentEmail" formControlName="studentEmail" 
+               class="form-control"
+               [ngClass]="{'is-invalid': f['studentEmail'].invalid && (f['studentEmail'].dirty || f['studentEmail'].touched)}">
+        
+        <!-- Hands-On 5: Async validation state -->
+        <div class="form-hint mt-xs" *ngIf="f['studentEmail'].pending">
+          <span class="spinner-sm inline-spinner"></span> Checking email availability...
+        </div>
+        
+        <div *ngIf="f['studentEmail'].invalid && (f['studentEmail'].dirty || f['studentEmail'].touched)" class="error-message mt-xs">
+          <span *ngIf="f['studentEmail'].errors?.['required']">Email is required.</span>
+          <span *ngIf="f['studentEmail'].errors?.['email']">Must be a valid email address.</span>
+          <!-- Hands-On 5: Custom Async Validator error -->
+          <span *ngIf="f['studentEmail'].errors?.['emailTaken']">This email is already taken!</span>
+        </div>
+      </div>
+
+      <!-- Course Code with Custom Sync Validator -->
+      <div class="form-group">
+        <label for="courseCode" class="form-label">Course Code (Custom Validation) <span class="required">*</span></label>
+        <input type="text" id="courseCode" formControlName="courseCode" 
+               class="form-control"
+               placeholder="e.g. CS101 (Do not start with XX)"
+               [ngClass]="{'is-invalid': f['courseCode'].invalid && (f['courseCode'].dirty || f['courseCode'].touched)}">
+        
+        <div *ngIf="f['courseCode'].invalid && (f['courseCode'].dirty || f['courseCode'].touched)" class="error-message mt-xs">
+          <span *ngIf="f['courseCode'].errors?.['required']">Course code is required.</span>
+          <!-- Hands-On 5: Custom Sync Validator error -->
+          <span *ngIf="f['courseCode'].errors?.['noCourseCode']">Course code starting with XX is not allowed.</span>
+        </div>
+      </div>
+
+      <!-- Course Selection -->
+      <div class="form-group">
+        <label for="courseId" class="form-label">Select Primary Course <span class="required">*</span></label>
+        <select id="courseId" formControlName="courseId" 
+                class="form-control"
+                [ngClass]="{'is-invalid': f['courseId'].invalid && (f['courseId'].dirty || f['courseId'].touched)}">
+          <option [ngValue]="null" disabled>-- Choose a Course --</option>
+          <option *ngFor="let course of availableCourses" [value]="course.id">
+            {{ course.name }}
+          </option>
+        </select>
+        <div *ngIf="f['courseId'].invalid && (f['courseId'].dirty || f['courseId'].touched)" class="error-message mt-xs">
+          Course selection is required.
+        </div>
+      </div>
+
+      <!-- Hands-On 5: FormArray for Dynamic Controls -->
+      <div class="form-group form-array-section" formArrayName="additionalCourses">
+        <div class="form-array-header">
+          <label class="form-label">Additional Courses (Optional)</label>
+          <button type="button" class="btn btn-outline btn-sm" (click)="addCourse()">
+            + Add Another Course
+          </button>
+        </div>
+        
+        <div class="form-hint mb-sm" *ngIf="additionalCourses.length === 0">
+          Click 'Add Another Course' to enroll in multiple courses at once.
+        </div>
+
+        <div class="array-item animate-fade-in" *ngFor="let ctrl of additionalCourses.controls; let i = index">
+          <input type="text" [formControlName]="i" class="form-control" placeholder="Enter course code">
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeCourse(i)">
+            Remove
+          </button>
+        </div>
+      </div>
+
+      <!-- Semester -->
+      <div class="form-group">
+        <label class="form-label">Semester</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" formControlName="preferredSemester" value="Odd 2024">
+            Odd 2024
+          </label>
+          <label class="radio-label">
+            <input type="radio" formControlName="preferredSemester" value="Even 2024">
+            Even 2024
+          </label>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="form-group mb-xl">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="agreeToTerms">
+          I agree to the enrollment terms and conditions. <span class="required">*</span>
+        </label>
+        <div *ngIf="f['agreeToTerms'].invalid && (f['agreeToTerms'].dirty || f['agreeToTerms'].touched)" class="error-message mt-xs">
+          You must agree to the terms.
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg w-full" [disabled]="enrollForm.invalid || enrollForm.pending">
+          Submit Reactive Form
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>

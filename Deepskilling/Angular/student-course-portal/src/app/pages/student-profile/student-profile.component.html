@@ -1,0 +1,75 @@
+<div class="page-hero">
+  <div class="container">
+    <h1>My Profile</h1>
+    <p>View your academic details and currently enrolled courses.</p>
+  </div>
+</div>
+
+<div class="page-content profile-layout">
+  <!-- Profile Sidebar -->
+  <div class="profile-sidebar animate-fade-in-up stagger-1">
+    <div class="profile-card">
+      <div class="profile-avatar">
+        <div class="avatar-initials">{{ student.name.substring(0, 2) | uppercase }}</div>
+      </div>
+      
+      <h2 class="profile-name">{{ student.name }}</h2>
+      <p class="profile-id">{{ student.studentId }}</p>
+      
+      <div class="profile-details">
+        <div class="detail-item">
+          <span class="detail-label">Email</span>
+          <span class="detail-value">{{ student.email }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Department</span>
+          <span class="detail-value">{{ student.department }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Semester</span>
+          <span class="detail-value">Semester {{ student.semester }}</span>
+        </div>
+        <div class="detail-item highlight-detail">
+          <span class="detail-label">Cumulative GPA</span>
+          <span class="detail-value gpa-value">{{ student.gpa }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="profile-main animate-fade-in-up stagger-2">
+    <div class="content-card">
+      <div class="card-header-flex">
+        <h2>Enrolled Courses</h2>
+        <a routerLink="/courses" class="btn btn-primary btn-sm">Browse Courses</a>
+      </div>
+      
+      <ng-container *ngIf="enrolledCourses$ | async as courses">
+        <div class="empty-state" *ngIf="courses.length === 0">
+          <div class="empty-icon">📝</div>
+          <h3>No courses enrolled</h3>
+          <p>You haven't enrolled in any courses for this semester yet.</p>
+          <a routerLink="/courses" class="btn btn-primary mt-sm">Find Courses</a>
+        </div>
+        
+        <div class="enrolled-list" *ngIf="courses.length > 0">
+          <div class="enrolled-item" *ngFor="let course of courses">
+            <div class="enrolled-info">
+              <span class="enrolled-code">{{ course.code }}</span>
+              <h3 class="enrolled-title">{{ course.name }}</h3>
+              <p class="enrolled-meta">
+                <span>{{ course.credits }} Credits</span>
+                <span class="dot-separator">•</span>
+                <span>{{ course.instructor || 'TBA' }}</span>
+              </p>
+            </div>
+            <div class="enrolled-actions">
+              <a [routerLink]="['/courses', course.id]" class="btn btn-outline btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
