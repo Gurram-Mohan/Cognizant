@@ -1,0 +1,1 @@
+import{oa as i}from"./chunk-DAJW7MSJ.js";var t=class e{transform(r){return r===1?`${r} credit`:`${r} credits`}static \u0275fac=function(n){return new(n||e)};static \u0275pipe=i({name:"creditSuffix",type:e,pure:!0})};export{t as a};

@@ -1,0 +1,1 @@
+import{o as t,p as r}from"./chunk-UOZAQGLI.js";var o=r("course"),s=t(o,e=>e.courses),u=t(o,e=>e.loading),p=t(o,e=>e.error);var n=r("enrollment"),a=t(n,e=>e.enrolledCourseIds),C=t(s,a,(e,l)=>e.filter(c=>l.includes(c.id)));export{s as a,u as b,p as c,a as d,C as e};

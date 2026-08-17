@@ -1,0 +1,1 @@
+import{b as o,c as r}from"./chunk-UOZAQGLI.js";var n=o("[Enrollment] Enroll In Course",r()),l=o("[Enrollment] Unenroll From Course",r()),s=o("[Enrollment] Set Enrolled Courses",r());export{n as a,l as b,s as c};
