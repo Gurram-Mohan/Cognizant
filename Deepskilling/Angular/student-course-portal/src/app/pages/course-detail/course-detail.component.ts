@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Course } from '../../models/course.model';
@@ -14,7 +14,7 @@ import { CreditSuffixPipe } from '../../pipes/credit-suffix.pipe';
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, CreditSuffixPipe],
+  imports: [CommonModule, CreditSuffixPipe],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
